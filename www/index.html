@@ -35,68 +35,14 @@
         <meta name="color-scheme" content="light dark">
         <script src="cordova.js"></script>
         <script src="https://sandbox.trustly.one/start/scripts/trustly.js?accessId={YOUR_ACCESS_ID}"></script>
+        <script src="js/index.js"></script>
         <!-- <link rel="stylesheet" href="css/index.css"> -->
         <title>Trustly Cordova Example</title>
     </head>
     <body>
-        <div id='trustlyWidget'></div>
         <div class="app">
             <h1>Checkout with Trustly</h1>
-            <!-- <button>
-                Pay Now
-            </button> -->
-            
-            <!-- <div>
-                <div id="trustlyWidget"></div>
-            </div> -->
-            <!-- <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready. Let's Party!</p>
-            </div> -->
+            <div id='trustlyWidget'></div>
         </div>
-        <!-- <script src="cordova.js"></script> -->
-        <!-- <script src="js/index.js"></script> -->
-        <script>
-            const ACCESS_ID = 'YOUR_ACCESS_ID';
-            const MERCHANT_ID = 'YOUR_MERCHANT_ID';
-            const serverURL = null; // YOUR_SERVER_URL
-
-            var trustlyOptions = {
-                closeButton: true,
-                dragAndDrop: false,
-                widgetContainerId: 'trustlyWidget',
-                containerId: 'trustlyWidget'
-            };
-
-            const returnEstablishData = () => {
-                let lightboxRedirectURL = serverURL ? serverURL : "#";
-                let data = {
-                accessId: ACCESS_ID,
-                // requestSignature: REQUEST_SIGNATURE,
-                merchantId: MERCHANT_ID,
-                description: 'transaction description',
-                merchantReference: 'merchant reference',
-                paymentType: 'Retrieval',
-                returnUrl: `${lightboxRedirectURL}/return`,
-                cancelUrl: `${lightboxRedirectURL}/cancel`,
-                metadata: {}  
-                };
-                // check query params for mobile
-                // if (params.get("integrationContext") && params.get("urlScheme")) {
-                //     if (!data.metadata) data.metadata = {};
-                //   data.metadata.urlScheme = `${params.get("urlScheme")}://`;
-                //   data.metadata.integrationContext = params.get("integrationContext");
-                // }
-                return data;
-            };
-            const establishData = returnEstablishData();
-            console.log(trustlyOptions);
-            const delay = () => {
-                setTimeout(renderWidget)
-            }
-            window.Trustly.selectBankWidget(trustlyOptions, establishData);
-        </script>
-        
-        
     </body>
 </html>

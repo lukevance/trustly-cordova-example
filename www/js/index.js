@@ -28,8 +28,7 @@ const serverURL = null; // YOUR_SERVER_URL
 const trustlyOptions = {
     closeButton: true,
     dragAndDrop: false,
-    widgetContainerId: "trustlyWidget",
-    containerId: "trustlyWidget"
+    widgetContainerId: "trustlyWidget"
 };
 
 const returnEstablishData = () => {
@@ -43,7 +42,10 @@ const returnEstablishData = () => {
       paymentType: 'Retrieval',
       returnUrl: `${lightboxRedirectURL}/return`,
       cancelUrl: `${lightboxRedirectURL}/cancel`,
-      metadata: {}  
+      metadata: {
+        integrationContext: "InAppBrowserNotify",
+        urlScheme: "io.cordova.trustlydemo://oauth_callback"
+      }
     };
     // check query params for mobile
     // if (params.get("integrationContext") && params.get("urlScheme")) {
@@ -60,9 +62,7 @@ function onDeviceReady() {
     // Cordova is now initialized. Have fun!
     const establishData = returnEstablishData();
     
-    // console.log(trustlyOptions);
-    // console.log("establish", establishData);
-    // window.Trustly.selectBankWidget(trustlyOptions, establishData);
+    window.Trustly.selectBankWidget(establishData, trustlyOptions)
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     // document.getElementById('deviceready').classList.add('ready');
